@@ -1,4 +1,4 @@
-// ── Shared Variables (mirrors home.scss theme) ────────────────────────────────
+@use "sass:color";
 $bg-page: #0d1117;
 $bg-card: #161b22;
 $bg-panel: #1c2230;
@@ -18,7 +18,6 @@ $severity-low: #3fb950;
     display: none;
 }
 
-// ── Page Shell ────────────────────────────────────────────────────────────────
 .interview-page {
     width: 100%;
     min-height: 100vh;
@@ -119,14 +118,6 @@ $severity-low: #3fb950;
     max-height: calc(100vh - 3rem);
     padding-bottom: 5rem;
     align-items: flex-start;
-
-
-
-
-
-
-
-
     section {
         min-height: 100%;
     }
@@ -172,7 +163,8 @@ $severity-low: #3fb950;
     transition: border-color 0.2s;
 
     &:hover {
-        border-color: lighten($border-color, 8%);
+        //border-color: lighten($border-color, 8%);
+        border-color: color.adjust($border-color, $lightness: 8%);
     }
 
     &__header {
@@ -234,7 +226,8 @@ $severity-low: #3fb950;
         p {
             margin: 0;
             font-size: 0.835rem;
-            color: lighten($text-muted, 15%);
+            //color: lighten($text-muted, 15%);
+            color: color.adjust($text-muted, $lightness: 15%);
             line-height: 1.6;
         }
     }
@@ -281,7 +274,6 @@ $severity-low: #3fb950;
         border-radius: 1px;
     }
 }
-
 .roadmap-day {
     display: flex;
     flex-direction: column;
@@ -301,13 +293,11 @@ $severity-low: #3fb950;
         background-color: $bg-card;
         border: 2px solid $accent;
     }
-
     &__header {
         display: flex;
         align-items: center;
         gap: 0.6rem;
     }
-
     &__badge {
         font-size: 0.7rem;
         font-weight: 700;
@@ -317,14 +307,12 @@ $severity-low: #3fb950;
         padding: 0.1rem 0.5rem;
         border-radius: 2rem;
     }
-
     &__focus {
         margin: 0;
         font-size: 0.95rem;
         font-weight: 600;
         color: $text-primary;
     }
-
     &__tasks {
         list-style: none;
         margin: 0;
@@ -332,17 +320,16 @@ $severity-low: #3fb950;
         display: flex;
         flex-direction: column;
         gap: 0.35rem;
-
         li {
             display: flex;
             align-items: flex-start;
             gap: 0.5rem;
             font-size: 0.845rem;
-            color: lighten($text-muted, 12%);
+            //color: lighten($text-muted, 12%);
+            color: color.adjust($text-muted, $lightness: 12%);
             line-height: 1.5;
         }
     }
-
     &__bullet {
         flex-shrink: 0;
         width: 5px;
@@ -352,7 +339,6 @@ $severity-low: #3fb950;
         margin-top: 8px;
     }
 }
-
 // ── Right Sidebar ─────────────────────────────────────────────────────────────
 .interview-sidebar {
     width: 240px;
@@ -362,12 +348,10 @@ $severity-low: #3fb950;
     flex-direction: column;
     gap: 1.25rem;
 }
-
 .sidebar-divider {
     height: 1px;
     background-color: $border-color;
 }
-
 // Match Score
 .match-score {
     display: flex;

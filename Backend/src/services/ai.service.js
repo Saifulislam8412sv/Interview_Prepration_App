@@ -6,8 +6,6 @@ const puppeteer = require("puppeteer")
 const ai = new GoogleGenAI({
     apiKey: process.env.GOOGLE_GENAI_API_KEY
 })
-
-
 const interviewReportSchema = z.object({
     matchScore: z.number().describe("A score between 0 and 100 indicating how well the candidate's profile matches the job describe"),
     technicalQuestions: z.array(z.object({
@@ -40,7 +38,6 @@ async function generateInterviewReport({ resume, selfDescription, jobDescription
                         Self Description: ${selfDescription}
                         Job Description: ${jobDescription}
 `
-
     const response = await ai.models.generateContent({
         model: "gemini-3-flash-preview",
         contents: prompt,
@@ -51,17 +48,11 @@ async function generateInterviewReport({ resume, selfDescription, jobDescription
     })
 
     return JSON.parse(response.text)
-
-
 }
-
-
-
 async function generatePdfFromHtml(htmlContent) {
     const browser = await puppeteer.launch()
     const page = await browser.newPage();
     await page.setContent(htmlContent, { waitUntil: "networkidle0" })
-
     const pdfBuffer = await page.pdf({
         format: "A4", margin: {
             top: "20mm",
@@ -70,18 +61,14 @@ async function generatePdfFromHtml(htmlContent) {
             right: "15mm"
         }
     })
-
     await browser.close()
-
     return pdfBuffer
 }
-
 async function generateResumePdf({ resume, selfDescription, jobDescription }) {
 
     const resumePdfSchema = z.object({
         html: z.string().describe("The HTML content of the resume which can be converted to PDF using any library like puppeteer")
     })
-
     const prompt = `Generate resume for a candidate with the following details:
                         Resume: ${resume}
                         Self Description: ${selfDescription}
@@ -94,7 +81,6 @@ async function generateResumePdf({ resume, selfDescription, jobDescription }) {
                         The content should be ATS friendly, i.e. it should be easily parsable by ATS systems without losing important information.
                         The resume should not be so lengthy, it should ideally be 1-2 pages long when converted to PDF. Focus on quality rather than quantity and make sure to include all the relevant information that can increase the candidate's chances of getting an interview call for the given job description.
                     `
-
     const response = await ai.models.generateContent({
         model: "gemini-3-flash-preview",
         contents: prompt,
@@ -103,14 +89,8 @@ async function generateResumePdf({ resume, selfDescription, jobDescription }) {
             responseSchema: zodToJsonSchema(resumePdfSchema),
         }
     })
-
-
     const jsonContent = JSON.parse(response.text)
-
     const pdfBuffer = await generatePdfFromHtml(jsonContent.html)
-
     return pdfBuffer
-
 }
-
 module.exports = { generateInterviewReport, generateResumePdf }
