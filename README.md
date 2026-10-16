@@ -32,22 +32,22 @@ follow a personalized skill-gap roadmap, and download an updated resume.
 
 ******************** Tech Stack ****************************
 
-**Frontend: React (Vite), SCSS  
-**Backend: Node.js, Express  
-**Database: MongoDB  
-**AI Integration: Google Gemini API (Google AI Studio)  
-**Authentication:  Email/Password (JWT + bcrypt) 
+Frontend: React (Vite), SCSS  
+Backend: Node.js, Express  
+Database: MongoDB  
+AI Integration: Google Gemini API (Google AI Studio)  
+Authentication:  Email/Password (JWT + bcrypt) 
 
 *************************** Working  ********************************
 
-1. **Sign up or log in : using email/password or Google.
-2. **Submit your details : paste your resume, write a short self-description, and paste the job description you're targeting.
-3. **Click Generate Report :  the Gemini API analyzes all three inputs together.
-4. **Review your results:
+1. Sign up or log in : using email/password or Google.
+2. Submit your details : paste your resume, write a short self-description, and paste the job description you're targeting.
+3. Click Generate Report :  the Gemini API analyzes all three inputs together.
+4. Review your results:
    i. ATS Score (1–100)
    ii. 10–15 tailored technical and behavioral interview questions with answers
    iii. A 7-day roadmap to close skill gaps
-5. **Download your updated resume, rewritten to better match the job description.
+5. Download your updated resume, rewritten to better match the job description.
 
 ## Getting Started
 
@@ -59,7 +59,7 @@ follow a personalized skill-gap roadmap, and download an updated resume.
 
 ### Environment Variables
 
-**Backend `.env`**
+Backend `.env`
 ```
 PORT=3000
 MONGO_URI=your_mongodb_connection_string
@@ -67,7 +67,7 @@ JWT_SECRET=your_jwt_secret
 GEMINI_API_KEY=your_gemini_api_key
 ```
 
-**Frontend `.env`**
+Frontend `.env`
 ```
 VITE_API_URL=http://localhost:3000
 ```
