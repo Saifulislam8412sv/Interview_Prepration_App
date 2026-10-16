@@ -62,7 +62,7 @@ Authentication:  Email/Password (JWT + bcrypt)
 Backend `.env`
 ```
 PORT=3000
-MONGO_URI=your_mongodb_connection_string
+MONGO_URI=your_mongodb_Atlas url
 JWT_SECRET=your_jwt_secret
 GEMINI_API_KEY=your_gemini_api_key
 ```
