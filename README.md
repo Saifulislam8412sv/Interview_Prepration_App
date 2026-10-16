@@ -76,7 +76,7 @@ VITE_API_URL=http://localhost:3000
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/Full-Stack-Gen-AI-Job-Preparation-Web-Application.git
+git clone https://github.com/Saifulislam8412sv/Interview_Prepration_App.git
 
 # Install backend dependencies
 cd Backend
